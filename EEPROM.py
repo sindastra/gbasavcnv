@@ -41,3 +41,8 @@ dumpfile_size = os.path.getsize(dumpfile_path)
 
 print("File '"+dumpfile_path+"' has size: "+str(dumpfile_size)+" bytes")
 
+if dumpfile_size % 8 == 0:
+	print("File can nicely be divided into blocks of 8 bytes! Continuing...")
+else:
+	print("File does not divide into blocks of 8 bytes... exiting!")
+	sys.exit(0)
