@@ -21,3 +21,23 @@ print("MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the")
 print("included LICENSE file.")
 print("")
 
+def printhelp():
+	print("Usage: "+sys.argv[0]+" <dumped_file.sav>")
+
+import sys
+
+if len(sys.argv) < 2:
+	printhelp()
+
+dumpfile_path = sys.argv[len(sys.argv)-1]
+
+import os.path
+
+if not os.path.isfile(dumpfile_path):
+	print("File '"+dumpfile_path+"' not found.")
+	sys.exit(0)
+
+dumpfile_size = os.path.getsize(dumpfile_path)
+
+print("File '"+dumpfile_path+"' has size: "+str(dumpfile_size)+" bytes")
+
