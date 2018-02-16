@@ -12,3 +12,12 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # included LICENSE file.
 
+print("Copyright (C) 2018 Sindastra <https://github.com/sindastra/gbasavcnv>.")
+print("All rights reserved.")
+print("")
+print("This program is distributed in the hope that it will be useful,")
+print("but WITHOUT ANY WARRANTY; without even the implied warranty of")
+print("MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the")
+print("included LICENSE file.")
+print("")
+
