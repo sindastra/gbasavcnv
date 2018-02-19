@@ -65,7 +65,7 @@ with open(dumpfile_abspath, "rb") as infile, open(outputfile_abspath, "wb") as o
 		if not inchunk: # no more data (EOF)
 			break
 
-		outfile.write( inchunk[7] + inchunk[6] + inchunk[5] + inchunk[4] + inchunk[3] + inchunk[2] + inchunk[1] + inchunk[0] )
+		outfile.write(inchunk[::-1])
 
 # Since we're only reversing the order of data, in- and output should be the same size,
 # let's just check in case something dodgy happened:
