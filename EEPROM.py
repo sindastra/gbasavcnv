@@ -47,3 +47,35 @@ if dumpfile_size % 8 == 0:
 else:
 	print("File does not divide into blocks of 8 bytes... exiting!")
 	sys.exit(0)
+
+iodir = os.path.dirname(os.path.abspath(dumpfile_path))
+dumpfile_abspath = os.path.abspath(dumpfile_path)
+
+print("Input/Output directory: "+iodir)
+
+# Do replace with "empty" and then add the new extension, in case the original save file has an unexpected extension.
+outputfile_abspath = dumpfile_abspath.replace(".sav", "").replace(".SAV","") + ".converted.sav"
+
+print("Output file will be: " + outputfile_abspath)
+
+with open(dumpfile_abspath, "rb") as infile, open(outputfile_abspath, "wb") as outfile:
+	while True:
+		inchunk = infile.read(8)
+
+		if not inchunk: # no more data (EOF)
+			break
+
+		outfile.write( inchunk[7] + inchunk[6] + inchunk[5] + inchunk[4] + inchunk[3] + inchunk[2] + inchunk[1] + inchunk[0] )
+
+# Since we're only reversing the order of data, in- and output should be the same size,
+# let's just check in case something dodgy happened:
+if os.path.getsize(outputfile_abspath) == dumpfile_size:
+	print("In/Out sizes match!")
+	print("All done!")
+else:
+	print("FAIL! In/Out sizes do not match!")
+	# File is obviously bad, let's delete it.
+	try:
+		os.remove(outputfile_abspath)
+	except OSError:
+		pass
