@@ -28,6 +28,7 @@ import sys
 
 if len(sys.argv) < 2:
 	printhelp()
+	sys.exit(0)
 
 dumpfile_path = sys.argv[len(sys.argv)-1]
 
